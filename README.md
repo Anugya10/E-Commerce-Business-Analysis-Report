@@ -29,17 +29,18 @@ The project aims to answer business questions related to:
 
 The project uses four relational tables:
 
-Customers
-Products
-Orders
-OrderDetails
+1. Customers
+2. Products
+3. Orders
+4. OrderDetails
 
 ## 📈 Business Questions Solved
 ### 1. Top 3 Cities with the Highest Number of Customers
 #### 🔍 Key Finding
-        The top three cities account for the largest concentration of customers, indicating these locations are the company's strongest markets with the    highest customer presence.
+The top three cities account for the largest concentration of customers, indicating these locations are the company's strongest markets with the    highest customer presence.
+
 #### 💡 Recommendation
-         Increase marketing investment and strengthen logistics operations in these cities while identifying strategies to grow the customer base in lower-performing regions.
+Increase marketing investment and strengthen logistics operations in these cities while identifying strategies to grow the customer base in lower-performing regions.
 
 ### 2. Customer Order Frequency Analysis
 #### 🔍 Key Finding
