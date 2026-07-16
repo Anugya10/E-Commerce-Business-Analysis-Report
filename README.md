@@ -1,4 +1,4 @@
-##📌 Overview
+##Overview
 
 This project focuses on analyzing an e-commerce dataset using SQL to solve real-world business problems. The objective is to extract actionable insights that support strategic decision-making across marketing, sales, customer analytics, and inventory management.
 
