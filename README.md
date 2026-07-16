@@ -1,4 +1,4 @@
-##Overview
+## 📌Overview
 
 This project focuses on analyzing an e-commerce dataset using SQL to solve real-world business problems. The objective is to extract actionable insights that support strategic decision-making across marketing, sales, customer analytics, and inventory management.
 
@@ -13,6 +13,7 @@ Product performance and revenue contribution
 Sales trend analysis
 Inventory optimization
 Business growth measurement
+
 🛠 SQL Concepts Used
 Aggregate Functions
 GROUP BY & HAVING
