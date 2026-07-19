@@ -127,7 +127,8 @@
      group by date_format(First_purchase, '%Y-%m')
      order by FirstPurchaseMonth asc;
 
---10. Identify the months with the highest sales volume, aiding in planning for stock levels, marketing efforts, and staffing in anticipation of peak demand periods.
+--10. Identify the months with the highest sales volume, aiding in planning for stock levels, marketing efforts, 
+--    and staffing in anticipation of peak demand periods.
       select
          date_format(order_date, '%Y-%m') as Month,
          sum(total_amount) as Totalsales
