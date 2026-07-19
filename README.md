@@ -1,96 +1,306 @@
-## 📌Overview
+# 🛒 E-Commerce Sales Analysis using SQL
 
-This project focuses on analyzing an e-commerce dataset using SQL to solve real-world business problems. The objective is to extract actionable insights that support strategic decision-making across marketing, sales, customer analytics, and inventory management.
+## 📌 Overview
 
-The analysis covers customer behavior, product performance, sales trends, and inventory optimization using advanced SQL concepts such as Common Table Expressions (CTEs), Window Functions, Aggregate Functions, Conditional Filtering, and Joins.
+This project focuses on analyzing an e-commerce dataset using SQL to solve real-world business problems. The objective is to transform raw transactional data into meaningful business insights that support strategic decision-making across customer analytics, sales performance, product analysis, and inventory management.
+
+The analysis explores customer purchasing behavior, product performance, sales trends, customer acquisition, and inventory optimization using advanced SQL concepts such as Common Table Expressions (CTEs), Window Functions, Aggregate Functions, Joins, Date Functions, and Conditional Filtering.
+
+---
 
 ## 🎯 Business Objectives
 
-The project aims to answer business questions related to:
+The project aims to answer key business questions related to:
 
-1. Customer segmentation and purchasing behavior
-2. Product performance and revenue contribution
-3. Sales trend analysis
-4. Inventory optimization
-5. Business growth measurement
+- Customer distribution across different markets
+- Customer purchasing behavior and order frequency
+- Product performance and revenue contribution
+- Product category popularity
+- Month-over-month sales growth
+- Average order value trends
+- Fast-moving inventory identification
+- Low-performing product analysis
+- Customer acquisition trends
+- Peak sales period identification
+
+---
 
 ## 🛠 SQL Concepts Used
-1. Aggregate Functions
-2. GROUP BY & HAVING
-3. INNER JOIN
-4. Common Table Expressions (CTEs)
-5. Window Functions (LAG)
-6. Date Functions
-7. DISTINCT
-8. ORDER BY
-9. LIMIT
+
+- Aggregate Functions (`COUNT()`, `SUM()`, `AVG()`)
+- `GROUP BY`
+- `HAVING`
+- `INNER JOIN`
+- `CROSS JOIN`
+- Common Table Expressions (CTEs)
+- Window Functions (`LAG()`)
+- Date Functions (`DATE_FORMAT()`)
+- `DISTINCT`
+- `ORDER BY`
+- `LIMIT`
+
+---
 
 ## 🗂 Dataset
 
-The project uses four relational tables:
+The project consists of four relational tables:
 
-1. Customers
-2. Products
-3. Orders
-4. OrderDetails
+### Customers
+Contains customer information including customer ID and location.
 
-## 📈 Business Questions Solved
-### 1. Top 3 Cities with the Highest Number of Customers
-#### 🔍 Business Finding
-The top three cities account for the largest concentration of customers, indicating these locations are the company's strongest markets with the    highest customer presence.
-#### 💡 Business Recommendation
+### Products
+Contains product information including product name, category, and price.
+
+### Orders
+Contains order-level information including customer, order date, and total order amount.
+
+### OrderDetails
+Contains product-level details for every order, including quantity and price per unit.
+
+---
+
+# 📈 Business Questions Solved
+
+## 1️⃣ Top 3 Cities with the Highest Number of Customers
+
+### 🎯 Business Objective
+
+Identify the company's strongest customer markets to support marketing investments and logistics planning.
+
+### 🛠 SQL Concepts Used
+
+- **COUNT()** – Counts the number of customers in each city.
+- **GROUP BY** – Groups customers based on their location.
+- **ORDER BY** – Sorts cities from highest to lowest customer count.
+- **LIMIT** – Returns only the top three cities.
+
+### 🔍 Business Finding
+
+The top three cities account for the largest concentration of customers, indicating these locations are the company's strongest markets with the highest customer presence.
+
+### 💡 Business Recommendation
+
 Increase marketing investment and strengthen logistics operations in these cities while identifying strategies to grow the customer base in lower-performing regions.
 
-### 2. Customer Order Frequency Analysis
-#### 🔍 Business Finding
+---
+
+## 2️⃣ Customer Order Frequency Analysis
+
+### 🎯 Business Objective
+
+Analyze customer purchasing behavior by identifying how frequently customers place orders.
+
+### 🛠 SQL Concepts Used
+
+- **CTE** – Calculates the total number of orders placed by each customer before grouping them into purchase frequency categories.
+- **COUNT()** – Counts the number of orders for each customer and later counts customers within each order frequency.
+- **GROUP BY** – Groups data by customer and then by order count.
+- **ORDER BY** – Displays purchase frequency in ascending order.
+
+### 🔍 Business Finding
+
 Most customers place only a small number of orders, while a relatively smaller segment consists of repeat customers who contribute significantly to overall sales.
-#### 💡 Business Recommendation
+
+### 💡 Business Recommendation
+
 Implement loyalty programs, personalized offers, and customer retention campaigns to encourage one-time buyers to become repeat customers.
 
-### 3. Premium Products with High Revenue
-#### 🔍 Business Finding
-Certain products generate high revenue despite having an average purchase quantity of only two units per order, suggesting customers are willing to pay more for these products.
-#### 💡 Business Recommendation
-Promote these premium products through targeted marketing campaigns, bundled offers, and personalized recommendations to maximize profitability.
+---
 
-### 4. Unique Customers by Product Category
-#### 🔍 Business Finding
-Some product categories attract a much larger number of unique customers than others, indicating stronger customer demand and broader market appeal.
-#### 💡 Business Recommendation
-Continue investing in high-performing categories while evaluating low-performing categories for pricing improvements, promotions, or product assortment optimization.
+## 3️⃣ Premium Products with High Revenue
 
-### 5. Month-over-Month Sales Growth
-#### 🔍 Business Finding
+### 🎯 Business Objective
+
+Identify products that generate high revenue despite customers purchasing only a small quantity per order.
+
+### 🛠 SQL Concepts Used
+
+- **AVG()** – Calculates the average quantity purchased per order.
+- **SUM()** – Calculates total revenue generated by each product.
+- **GROUP BY** – Aggregates sales for each product.
+- **HAVING** – Filters products with an average purchase quantity of exactly two.
+- **ORDER BY** – Ranks products based on revenue.
+
+### 🔍 Business Finding
+
+Certain products generate high revenue despite having an average purchase quantity of only two units per order, suggesting customers are willing to pay premium prices for these products.
+
+### 💡 Business Recommendation
+
+Promote these premium products through targeted marketing campaigns, premium branding, and personalized recommendations to maximize profitability.
+
+---
+
+## 4️⃣ Unique Customers by Product Category
+
+### 🎯 Business Objective
+
+Determine which product categories attract the widest customer base.
+
+### 🛠 SQL Concepts Used
+
+- **INNER JOIN** – Combines Products, Orders, and OrderDetails tables.
+- **COUNT(DISTINCT)** – Counts unique customers purchasing from each category.
+- **GROUP BY** – Aggregates results by category.
+- **ORDER BY** – Ranks categories based on customer count.
+
+### 🔍 Business Finding
+
+Some product categories attract significantly more unique customers than others, indicating stronger market demand.
+
+### 💡 Business Recommendation
+
+Continue investing in high-performing categories while improving product assortment and promotional strategies for weaker categories.
+
+---
+
+## 5️⃣ Month-over-Month Sales Growth
+
+### 🎯 Business Objective
+
+Measure monthly sales growth to identify business expansion and declining periods.
+
+### 🛠 SQL Concepts Used
+
+- **CTE** – Stores monthly sales before calculating growth.
+- **SUM()** – Calculates monthly revenue.
+- **DATE_FORMAT()** – Groups transactions by month.
+- **LAG()** – Retrieves the previous month's sales for comparison.
+- **ROUND()** – Formats the percentage growth.
+
+### 🔍 Business Finding
+
 Sales growth fluctuates across months, revealing periods of strong business expansion as well as months where revenue declines.
-#### 💡 Business Recommendation
-Analyze the factors behind both high-growth and low-growth months to improve future marketing campaigns, pricing strategies, and seasonal planning.
 
-### 6. Month-over-Month Average Order Value
-#### 🔍 Business Finding
-Average order value varies throughout the year, suggesting that customer purchasing behavior changes due to promotions, pricing strategies, or seasonal demand.
-#### 💡 Business Recommendation
-Identify the strategies used during months with higher average order values and replicate those campaigns to increase customer spending.
+### 💡 Business Recommendation
 
-### 7. Fastest Selling Products
-#### 🔍 Business Finding
+Analyze factors driving both high-growth and low-growth months to improve future promotional campaigns and seasonal planning.
+
+---
+
+## 6️⃣ Month-over-Month Average Order Value
+
+### 🎯 Business Objective
+
+Track changes in customer spending behavior over time.
+
+### 🛠 SQL Concepts Used
+
+- **CTE** – Stores monthly average order values.
+- **AVG()** – Calculates average order value.
+- **DATE_FORMAT()** – Groups data by month.
+- **LAG()** – Compares average order value with the previous month.
+- **ROUND()** – Formats calculated values.
+- **ORDER BY** – Sorts months based on value change.
+
+### 🔍 Business Finding
+
+Average order value varies throughout the year, suggesting customer purchasing behavior changes due to promotions, pricing strategies, or seasonal demand.
+
+### 💡 Business Recommendation
+
+Replicate pricing and promotional strategies used during months with higher average order values to increase customer spending.
+
+---
+
+## 7️⃣ Fastest Selling Products
+
+### 🎯 Business Objective
+
+Identify products with the highest sales frequency to improve inventory planning.
+
+### 🛠 SQL Concepts Used
+
+- **COUNT()** – Counts the number of times each product was sold.
+- **GROUP BY** – Aggregates transactions by product.
+- **ORDER BY** – Ranks products by sales frequency.
+- **LIMIT** – Returns the top five products.
+
+### 🔍 Business Finding
+
 A small group of products experiences significantly higher sales frequency, making them the fastest-moving inventory items.
-#### 💡 Business Recommendation
-Maintain higher inventory levels for these products and prioritize them in procurement planning to minimize stock-out risks.
 
-### 8. Products Purchased by Less Than 40% of Customers
-#### 🔍 Business Finding
+### 💡 Business Recommendation
+
+Maintain higher inventory levels for these products and prioritize procurement planning to minimize stock-out risks.
+
+---
+
+## 8️⃣ Products Purchased by Less Than 40% of Customers
+
+### 🎯 Business Objective
+
+Identify products with low customer adoption to improve inventory utilization.
+
+### 🛠 SQL Concepts Used
+
+- **CTE** – Separately calculates total customers and product-level customer counts.
+- **COUNT(DISTINCT)** – Counts unique customers purchasing each product.
+- **INNER JOIN** – Connects product, order, and sales information.
+- **CROSS JOIN** – Makes total customer count available for comparison.
+- **WHERE** – Filters products purchased by fewer than 40% of customers.
+
+### 🔍 Business Finding
+
 Several products have low customer adoption despite being available in inventory, indicating limited customer interest or insufficient product visibility.
-#### 💡 Business Recommendation
-Improve product visibility through promotions and recommendations or consider reducing inventory for consistently underperforming products.
 
-### 9. Monthly Customer Acquisition
-#### 🔍 Business Finding
-The number of new customers acquired varies across months, highlighting differences in marketing effectiveness and seasonal customer acquisition patterns.
-#### 💡 Recommendation
-Study the acquisition channels used during high-performing months and replicate those strategies to maintain consistent customer growth.
+### 💡 Business Recommendation
 
-### 10. Top Sales Months
-#### 🔍 Business Finding
-A few months consistently generate the highest sales volume, indicating clear seasonal demand and peak business periods.
-#### 💡 Recommendation
-Prepare inventory, staffing, logistics, and marketing campaigns in advance for these peak months to maximize revenue and prevent stock shortages.
+Improve product visibility through targeted promotions and personalized recommendations, or reduce inventory for consistently underperforming products.
+
+---
+
+## 9️⃣ Monthly Customer Acquisition
+
+### 🎯 Business Objective
+
+Evaluate customer acquisition trends to understand business growth and marketing effectiveness.
+
+### 🛠 SQL Concepts Used
+
+- **CTE** – Determines each customer's first purchase date.
+- **MIN()** – Identifies the earliest purchase.
+- **DATE_FORMAT()** – Groups customer acquisitions by month.
+- **COUNT()** – Counts new customers.
+- **GROUP BY** – Aggregates monthly customer acquisition.
+- **ORDER BY** – Displays acquisition trends chronologically.
+
+### 🔍 Business Finding
+
+The number of new customers acquired varies across months, highlighting seasonal trends and varying marketing effectiveness.
+
+### 💡 Business Recommendation
+
+Study acquisition channels used during high-performing months and replicate successful campaigns to sustain customer growth.
+
+---
+
+## 🔟 Top Sales Months
+
+### 🎯 Business Objective
+
+Identify peak sales periods to improve inventory planning and resource allocation.
+
+### 🛠 SQL Concepts Used
+
+- **SUM()** – Calculates total monthly revenue.
+- **DATE_FORMAT()** – Groups sales by month.
+- **GROUP BY** – Aggregates monthly sales.
+- **ORDER BY** – Ranks months by total sales.
+- **LIMIT** – Returns the top three months.
+
+### 🔍 Business Finding
+
+A few months consistently generate the highest sales volume, indicating strong seasonal demand.
+
+### 💡 Business Recommendation
+
+Prepare inventory, staffing, logistics, and marketing campaigns in advance for these peak sales periods to maximize revenue and avoid stock shortages.
+
+---
+
+# 🚀 Conclusion
+
+This project demonstrates how SQL can be leveraged to clean, transform, and analyze e-commerce data to solve real-world business problems. By applying advanced SQL techniques such as CTEs, Window Functions, Aggregate Functions, Joins, and Date Functions, the project delivers actionable insights into customer behavior, sales performance, product demand, and business growth.
+
+The analysis provides practical business recommendations that can support data-driven decision-making and showcases the analytical skills required for Data Analyst, Business Intelligence, and SQL Developer roles.
